@@ -1,9 +1,24 @@
 package org.cauesobral;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 public class Main {
     static void main() {
-        BuscarCEP buscador = new BuscarCEP();
-        Endereco novoEndereco = buscador.buscarEndereco("11380170");
-        System.out.println(novoEndereco);
+        Scanner leitura = new Scanner(System.in);
+        BuscarCEP consultaCep = new BuscarCEP();
+
+        System.out.println("Digite um número de CEP para consulta:");
+        var cep = leitura.nextLine();
+
+        try {
+            Endereco novoEndereco = consultaCep.buscarEndereco(cep);
+            System.out.println(novoEndereco);
+            GeradorDeArquivo gerador = new GeradorDeArquivo();
+            gerador.salvaJson(novoEndereco);
+        } catch (RuntimeException | IOException e) {
+            System.out.println(e.getMessage());
+            System.out.println("Finalizando a aplicação");
+        }
     }
 }

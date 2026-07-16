@@ -1,5 +1,6 @@
 package org.cauesobral;
 
-public record Endereco (String cep, String logradouro, String complemento,
-                        String bairro, String localidade, String uf, String estado, String regiao){
+public record Endereco(String cep, String logradouro,
+                       String complemento, String bairro,
+                       String localidade, String uf) {
 }
