@@ -2,6 +2,8 @@ package org.cauesobral;
 
 public class Main {
     static void main() {
-        System.out.println("Hello World!");
+        BuscarCEP buscador = new BuscarCEP();
+        Endereco novoEndereco = buscador.buscarEndereco("11380170");
+        System.out.println(novoEndereco);
     }
 }
